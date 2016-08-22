@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import SortableTh from '../sortable-th/sortable-th';
 import fetch from 'isomorphic-fetch'
+import TableRow from '../installs-row/installs-row';
 
 class InstallsContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      installs: null
+      model: []
     };
   }
-
-
 
   componentDidMount() {
     return fetch('https://telemetry.rancher.io/admin/installs', {
@@ -24,13 +23,16 @@ class InstallsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        installs: response.data
+        model: response.data
       });
     });
 
   }
 
   render() {
+    let tableRows = this.state.model.map((install) => {
+      return <TableRow model={install} key={install.id} />
+    });
     return (
       <table>
         <thead>
@@ -45,10 +47,12 @@ class InstallsContainer extends Component {
             <SortableTh label='Memory' name='memory' />
             <SortableTh label='Stack' name='stack' />
             <SortableTh label='Catalog' name='catalog' />
+            <SortableTh label='Service' name='service' />
             <SortableTh label='Container' name='container' />
           </tr>
         </thead>
         <tbody>
+          {tableRows}
         </tbody>
       </table>
     )
