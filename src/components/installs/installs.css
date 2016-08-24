@@ -1,0 +1,35 @@
+#installs-table th.reactable-header-sort-desc:after {
+  -webkit-font-smoothing: antialiased;
+  content: '\e90a';
+  font-family: 'rancher-icons' !important;
+  font-size: 10px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  moz-osx-font-smoothing: grayscale;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  position: relative;
+  top: -2px;
+  speak: none;
+  text-transform: none;
+}
+
+#installs-table th.reactable-header-sort-asc:after {
+  -webkit-font-smoothing: antialiased;
+  content: '\e907';
+  font-family: 'rancher-icons' !important;
+  font-size: 10px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  moz-osx-font-smoothing: grayscale;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  position: relative;
+  top: -2px;
+  speak: none;
+  text-transform: none;
+}
