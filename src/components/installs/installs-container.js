@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch'
 import { Table, Tr, Td } from 'reactable';
+import { Link } from 'react-router';
 import './installs.css';
 
 const TABLE_LAYOUT = [
@@ -81,11 +82,11 @@ class InstallsContainer extends Component {
   }
 
   render() {
+
     let parseContentText = function(item, install) {
       switch(item.name) {
         case 'Auth':
           return Object.keys(install.record.install.auth)[0];
-          break;
         case 'Orch':
           let max = {
             value: 0,
@@ -103,12 +104,15 @@ class InstallsContainer extends Component {
             }
           });
           return `${max.name} : ${(max.value * 100)}%`;
-          break;
+        case 'UID':
+          let url = `/install/${install.uid}`;
+          return (<Link to={url}>{install.uid}</Link>)
         default:
           return item.path.split('.').reduce((o,i)=>o[i], install)
-          break;
+
       }
     }
+
     let getTableContent = function(install) {
       return TABLE_LAYOUT.map((tableItem) => {
         return (

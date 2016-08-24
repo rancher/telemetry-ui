@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import InstallsContainer from './components/installs/installs-container';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +8,7 @@ class App extends Component {
         <div className="app-header">
           <h2>Telemetry</h2>
         </div>
-        <InstallsContainer />
+        {this.props.children}
       </div>
     );
   }
