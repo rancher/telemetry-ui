@@ -3,12 +3,14 @@ import Container from './container';
 import GraphUtil from '../../../utils/graph';
 
 const TOTALSCONTAINER = 'container.total';
+const CONTAINERTOTALS = 'container.per_host_avg'
 
 class ContainerContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       lineData: null,
+      containerTotals: 0
     };
   }
 
@@ -29,11 +31,25 @@ class ContainerContainer extends Component {
       });
     });
 
+    fetch(`https://telemetry.rancher.io/admin/counts/${CONTAINERTOTALS}`, {
+      headers: {
+        'Authorization': `Basic ${btoa('foo:bar')}`
+      }
+    }).then((response) => {
+        if (response.status >= 400) {
+            throw new Error("Bad response from server");
+        }
+        return response.json();
+    }).then((response) => {
+      this.setState({
+        containerTotals: response[CONTAINERTOTALS]
+      });
+    });
   }
 
   render() {
     return (
-      <Container lineData={this.state.lineData}/>
+      <Container lineData={this.state.lineData} containerTotals={this.state.containerTotals}/>
     );
   }
 }

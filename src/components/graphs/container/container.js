@@ -7,6 +7,7 @@ class Container extends Component {
       return (
         <div>
           <h1>Containers</h1>
+          <h4>Per Host Average: {this.props.containerTotals}</h4>
           <Line data={this.props.lineData} />
         </div>
       );

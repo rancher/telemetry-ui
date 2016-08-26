@@ -6,7 +6,10 @@ class Service extends Component {
     if (this.props.lineData && this.props.pieData) {
       return (
         <div>
-          <h1>Servies</h1>
+          <h1>Services</h1>
+          <div>
+            <h4>Per Stack Average: {this.props.serviceTotals.perStackAvg}</h4>
+          </div>
           <Line data={this.props.lineData} />
           <Pie data={this.props.pieData} />
         </div>

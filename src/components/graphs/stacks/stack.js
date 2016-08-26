@@ -7,6 +7,10 @@ class Hosts extends Component {
       return (
         <div>
           <h1>Stacks</h1>
+          <div>
+            <h4>Total From Catalog: {this.props.stacksTotals.fromCatalog}</h4>
+            <h4>Per Environment Average: {this.props.stacksTotals.perEnvAvg}</h4>
+          </div>
           <Line data={this.props.lineData} />
         </div>
       );

@@ -4,6 +4,8 @@ import GraphUtil from '../../../utils/graph';
 
 const TOTALSKEYENV = 'service.total';
 const TOTALSKEYORCH = 'service.kind';
+const TOTALSSERVICES = 'service.per_stack_avg';
+
 let serviceMap = [
   {
     "value": null,
@@ -37,7 +39,10 @@ class ServiceContainer extends Component {
     super(props);
     this.state = {
       lineData: null,
-      pieData: null
+      pieData: null,
+      serviceTotals: {
+        perStackAvg: 0
+      }
     };
   }
 
@@ -73,11 +78,27 @@ class ServiceContainer extends Component {
       });
     });
 
+    fetch(`https://telemetry.rancher.io/admin/counts/${TOTALSSERVICES}`, {
+      headers: {
+        'Authorization': `Basic ${btoa('foo:bar')}`
+      }
+    }).then((response) => {
+        if (response.status >= 400) {
+            throw new Error("Bad response from server");
+        }
+        return response.json();
+    }).then((response) => {
+      this.setState({
+        serviceTotals: {
+          perStackAvg: response[TOTALSSERVICES]
+        }
+      });
+    });
   }
 
   render() {
     return (
-       <Service lineData={this.state.lineData} pieData={this.state.pieData}/>
+       <Service lineData={this.state.lineData} pieData={this.state.pieData} serviceTotals={this.state.serviceTotals}/>
     );
   }
 }

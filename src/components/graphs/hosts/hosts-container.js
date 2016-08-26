@@ -4,6 +4,7 @@ import GraphUtil from '../../../utils/graph';
 
 const TOTALSKEYHOST = 'host.count';
 const TOTALSKEYDRIVER = 'host.driver';
+const CPUTOTALS = 'host.cpu.cores_total,host.cpu.mhz_total';
 let orchMap = [
   {
     "value": null,
@@ -37,7 +38,11 @@ class HostsContainer extends Component {
     super(props);
     this.state = {
       lineData: null,
-      pieData: null
+      pieData: null,
+      cpuTotals: {
+        cores: 0,
+        mhz: 0
+      }
     };
   }
 
@@ -55,6 +60,25 @@ class HostsContainer extends Component {
     }).then((response) => {
       this.setState({
         lineData: GraphUtil.parseLineData(response, 'Total Environments', TOTALSKEYHOST)
+      });
+    });
+
+    fetch(`https://telemetry.rancher.io/admin/counts/${CPUTOTALS}`, {
+      headers: {
+        'Authorization': `Basic ${btoa('foo:bar')}`
+      }
+    }).then((response) => {
+        if (response.status >= 400) {
+            throw new Error("Bad response from server");
+        }
+        return response.json();
+    }).then((response) => {
+      let cpuTotals = CPUTOTALS.split(',');
+      this.setState({
+        cpuTotals: {
+          cores: response[cpuTotals[0]],
+          mhz: response[cpuTotals[1]]
+        }
       });
     });
 
@@ -78,7 +102,7 @@ class HostsContainer extends Component {
 
   render() {
     return (
-      <Hosts lineData={this.state.lineData} pieData={this.state.pieData}/>
+      <Hosts lineData={this.state.lineData} pieData={this.state.pieData} cpuTotals={this.state.cpuTotals}/>
     );
   }
 }
