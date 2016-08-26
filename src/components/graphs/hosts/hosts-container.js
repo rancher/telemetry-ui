@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Environments from './environments';
+import Hosts from './hosts';
 import GraphUtil from '../../../utils/graph';
 
-const TOTALSKEYENV = 'environment.total';
-const TOTALSKEYORCH = 'environment.orch';
+const TOTALSKEYHOST = 'host.count';
+const TOTALSKEYDRIVER = 'host.driver';
 let orchMap = [
   {
     "value": null,
@@ -32,7 +32,7 @@ let orchMap = [
 ];
 
 
-class EnvironmentsContainer extends Component {
+class HostsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +43,7 @@ class EnvironmentsContainer extends Component {
 
 
   componentDidMount() {
-    fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSKEYENV}`, {
+    fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSKEYHOST}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -54,11 +54,11 @@ class EnvironmentsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        lineData: GraphUtil.parseLineData(response, 'Total Environments', TOTALSKEYENV)
+        lineData: GraphUtil.parseLineData(response, 'Total Environments', TOTALSKEYHOST)
       });
     });
 
-    fetch(`https://telemetry.rancher.io/admin/count-map/${TOTALSKEYORCH}`, {
+    {/*fetch(`https://telemetry.rancher.io/admin/count-map/${TOTALSKEYDRIVER}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -72,14 +72,15 @@ class EnvironmentsContainer extends Component {
         pieData: GraphUtil.parsePieData(response, orchMap)
       });
     });
+    */}
 
   }
 
   render() {
     return (
-      <Environments lineData={this.state.lineData} pieData={this.state.pieData}/>
+      <Hosts lineData={this.state.lineData} pieData={this.state.pieData}/>
     );
   }
 }
 
-export default EnvironmentsContainer;
+export default HostsContainer;
