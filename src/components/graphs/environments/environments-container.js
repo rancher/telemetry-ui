@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Environments from './environments';
 import GraphUtil from '../../../utils/graph';
+import Constants from '../../../utils/constants';
 
 const TOTALSKEYENV = 'environment.total';
 const TOTALSKEYORCH = 'environment.orch';
@@ -43,7 +44,7 @@ class EnvironmentsContainer extends Component {
 
 
   componentDidMount() {
-    fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSKEYENV}`, {
+    fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYENV}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -58,7 +59,7 @@ class EnvironmentsContainer extends Component {
       });
     });
 
-    fetch(`https://telemetry.rancher.io/admin/count-map/${TOTALSKEYORCH}`, {
+    fetch(`https://telemetry.rancher.io/admin/active/map/${TOTALSKEYORCH}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -69,7 +70,7 @@ class EnvironmentsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        pieData: GraphUtil.parsePieData(response, orchMap)
+        pieData: GraphUtil.parsePieData(response, GraphUtil.constructMap(response))
       });
     });
 

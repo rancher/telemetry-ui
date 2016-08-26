@@ -16,7 +16,7 @@ class ContainerContainer extends Component {
 
 
   componentDidMount() {
-    fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSCONTAINER}`, {
+    fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSCONTAINER}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -31,7 +31,7 @@ class ContainerContainer extends Component {
       });
     });
 
-    fetch(`https://telemetry.rancher.io/admin/counts/${CONTAINERTOTALS}`, {
+    fetch(`https://telemetry.rancher.io/admin/active/fields/${CONTAINERTOTALS}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }

@@ -1,4 +1,23 @@
+import Constants from './constants';
+
 let GraphUtil = {
+
+  constructMap(data) {
+    let keys = Object.keys(data);
+    let tmp = [];
+    let graphColors = Constants.graphColors;
+
+    keys.forEach((key, idx) => {
+      tmp.push({
+        value: data[key],
+        color: graphColors[idx][0],
+        highlight: graphColors[idx][1],
+        label: key
+      })
+    });
+
+    return tmp;
+  },
 
   parseLineData(dataset, label, subKey) {
     let out = {

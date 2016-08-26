@@ -64,7 +64,7 @@ class InstallsContainer extends Component {
   }
 
   componentDidMount() {
-    return fetch('https://telemetry.rancher.io/admin/installs?hours=48', {
+    return fetch('https://telemetry.rancher.io/admin/active', {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }

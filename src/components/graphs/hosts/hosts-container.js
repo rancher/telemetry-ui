@@ -48,7 +48,7 @@ class HostsContainer extends Component {
 
 
   componentDidMount() {
-    fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSKEYHOST}`, {
+    fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYHOST}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -63,7 +63,7 @@ class HostsContainer extends Component {
       });
     });
 
-    fetch(`https://telemetry.rancher.io/admin/counts/${CPUTOTALS}`, {
+    fetch(`https://telemetry.rancher.io/admin/active/fields/${CPUTOTALS}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }

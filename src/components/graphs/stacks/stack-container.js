@@ -18,7 +18,7 @@ class StackContainer extends Component {
 
 
   componentDidMount() {
-    fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSKEYSTACK}`, {
+    fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYSTACK}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -33,7 +33,7 @@ class StackContainer extends Component {
       });
     });
 
-    fetch(`https://telemetry.rancher.io/admin/counts/${STACKSCOUNTS}`, {
+    fetch(`https://telemetry.rancher.io/admin/active/fields/${STACKSCOUNTS}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }

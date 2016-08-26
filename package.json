@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "lacsso": "0.0.2",
     "react-scripts": "0.2.1"
   },
   "dependencies": {
