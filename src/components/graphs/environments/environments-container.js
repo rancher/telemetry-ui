@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Environments from './environments';
+import GraphUtil from '../../../utils/graph';
 
 const TOTALSKEY = 'environment.total';
 let orchMap = [
@@ -29,14 +30,6 @@ let orchMap = [
   }
 ];
 
-function getIndex(value, arr, prop) {
-  for(var i = 0; i < arr.length; i++) {
-    if(arr[i][prop] === value) {
-        return i;
-    }
-  }
-  return -1; //to handle the case where the value doesn't exist
-}
 
 class EnvironmentsContainer extends Component {
   constructor(props) {
@@ -47,35 +40,6 @@ class EnvironmentsContainer extends Component {
     };
   }
 
-  parseLineData(dataset, label) {
-    let out = {
-      datasets: [{
-        label: label,
-        data: []
-      }]
-    };
-    let data = [];
-    let keys = Object.keys(dataset);
-
-    out.labels = keys;
-    keys.forEach((cv) => {
-      data.push(dataset[cv][TOTALSKEY]);
-    });
-
-    out.datasets[0].data = data;
-    return out;
-  }
-
-  parsePieData(dataset, map) {
-    let out = map;
-    let keys = Object.keys(dataset);
-
-    keys.forEach((orch) => {
-      out[getIndex(orch, out, 'label')].value = dataset[orch];
-    });
-
-    return out;
-  }
 
   componentDidMount() {
     fetch(`https://telemetry.rancher.io/admin/historical/${TOTALSKEY}`, {
@@ -89,7 +53,7 @@ class EnvironmentsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        lineData: this.parseLineData(response, 'Total Environments')
+        lineData: GraphUtil.parseLineData(response, 'Total Environments', TOTALSKEY)
       });
     });
 
@@ -104,7 +68,7 @@ class EnvironmentsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        pieData: this.parsePieData(response, orchMap)
+        pieData: GraphUtil.parsePieData(response, orchMap)
       });
     });
 
