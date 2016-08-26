@@ -116,7 +116,7 @@ class InstallsContainer extends Component {
     let getTableContent = function(install) {
       return TABLE_LAYOUT.map((tableItem) => {
         return (
-          <Td column={tableItem.name} style={{width: 80}} key={install.id}>
+          <Td column={tableItem.name} style={{width: 120}} key={install.id}>
             {parseContentText(tableItem, install) }
           </Td>
         )
@@ -132,9 +132,11 @@ class InstallsContainer extends Component {
     });
 
     return (
-      <Table id="installs-table" sortable={true}>
-        {tableRows}
-      </Table>
+      <div className='row alert'>
+        <Table id="installs-table" sortable={true}>
+          {tableRows}
+        </Table>
+      </div>
     )
   }
 }

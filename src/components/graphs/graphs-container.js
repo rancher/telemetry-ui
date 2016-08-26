@@ -5,10 +5,12 @@ import StackContainer from './stacks/stack-container';
 import ServiceContainer from './service/service-container';
 import ContainerContainer from './container/containers-container';
 
+import './graphs.css';
+
 class GraphsContainer extends Component {
   render() {
     return (
-      <div>
+      <div className='section-graphs'>
         <div className='row alert'>
           <EnvironmentsContainer/>
           <HostsContainer/>
