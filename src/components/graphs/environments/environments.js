@@ -6,6 +6,7 @@ class Environments extends Component {
     if (this.props.lineData && this.props.pieData) {
       return (
         <div>
+          <h1>Environemnts</h1>
           <Line data={this.props.lineData} />
           <Pie data={this.props.pieData} />
         </div>

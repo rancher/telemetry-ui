@@ -1,4 +1,5 @@
 let GraphUtil = {
+
   parseLineData(dataset, label, subKey) {
     let out = {
       datasets: [{
@@ -17,6 +18,7 @@ let GraphUtil = {
     out.datasets[0].data = data;
     return out;
   },
+
   parsePieData(dataset, map) {
     let out = map;
     let keys = Object.keys(dataset);
