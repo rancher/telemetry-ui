@@ -6,34 +6,6 @@ const TOTALSKEYENV = 'service.total';
 const TOTALSKEYORCH = 'service.kind';
 const TOTALSSERVICES = 'service.per_stack_avg';
 
-let serviceMap = [
-  {
-    "value": null,
-    "color": "#F7464A",
-    "highlight": "#FF5A5E",
-    "label": "dnsService"
-  },
-  {
-    "value": null,
-    "color": "#46BFBD",
-    "highlight": "#5AD3D1",
-    "label": "externalService"
-  },
-  {
-    "value": null,
-    "color": "#FDB45C",
-    "highlight": "#FFC870",
-    "label": "loadBalancerService"
-  },
-  {
-    "value": null,
-    "color": "#949FB1",
-    "highlight": "#A8B3C5",
-    "label": "service"
-  }
-];
-
-
 class ServiceContainer extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +46,7 @@ class ServiceContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        pieData: GraphUtil.parsePieData(response, serviceMap)
+        pieData: GraphUtil.parsePieData(response, GraphUtil.constructMap(response))
       });
     });
 

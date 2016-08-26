@@ -9,11 +9,17 @@ class GraphsContainer extends Component {
   render() {
     return (
       <div>
-        <EnvironmentsContainer />
-        <HostsContainer />
-        <StackContainer />
-        <ServiceContainer />
-        <ContainerContainer />
+        <div className='row alert'>
+          <EnvironmentsContainer/>
+          <HostsContainer/>
+        </div>
+        <div className='row alert'>
+          <StackContainer/>
+          <ServiceContainer/>
+        </div>
+        <div className='row alert'>
+          <ContainerContainer/>
+        </div>
       </div>
     );
   }

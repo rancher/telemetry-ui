@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './logos/loader-graph.svg';
 
 class App extends Component {
   render() {

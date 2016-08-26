@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs';
+import GraphLoader from '../../graph-loader/graph-loader';
 
 class Hosts extends Component {
   render() {
     if (this.props.lineData) {
       return (
-        <div>
+        <div className="col span6">
           <h1>Stacks</h1>
           <div>
             <h4>Total From Catalog: {this.props.stacksTotals.fromCatalog}</h4>
@@ -16,7 +17,7 @@ class Hosts extends Component {
       );
     }
     return (
-      <div>Loading</div>
+      <GraphLoader />
     );
   }
 }

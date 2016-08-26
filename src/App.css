@@ -7,3 +7,9 @@
   padding: 20px;
   color: white;
 }
+
+.loader-graph {
+  background: url(/static/media/loader-graph.svg) no-repeat -90px/120%;
+  height: 300px;
+  width: 600px;
+}

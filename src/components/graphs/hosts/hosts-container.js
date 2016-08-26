@@ -5,33 +5,6 @@ import GraphUtil from '../../../utils/graph';
 const TOTALSKEYHOST = 'host.count';
 const TOTALSKEYDRIVER = 'host.driver';
 const CPUTOTALS = 'host.cpu.cores_total,host.cpu.mhz_total';
-let orchMap = [
-  {
-    "value": null,
-    "color": "#F7464A",
-    "highlight": "#FF5A5E",
-    "label": "cattle"
-  },
-  {
-    "value": null,
-    "color": "#46BFBD",
-    "highlight": "#5AD3D1",
-    "label": "kubernetes"
-  },
-  {
-    "value": null,
-    "color": "#FDB45C",
-    "highlight": "#FFC870",
-    "label": "swarm"
-  },
-  {
-    "value": null,
-    "color": "#949FB1",
-    "highlight": "#A8B3C5",
-    "label": "mesos"
-  }
-];
-
 
 class HostsContainer extends Component {
   constructor(props) {
@@ -82,7 +55,7 @@ class HostsContainer extends Component {
       });
     });
 
-    {/*fetch(`https://telemetry.rancher.io/admin/count-map/${TOTALSKEYDRIVER}`, {
+    fetch(`https://telemetry.rancher.io/admin/active/map/${TOTALSKEYDRIVER}`, {
       headers: {
         'Authorization': `Basic ${btoa('foo:bar')}`
       }
@@ -93,10 +66,10 @@ class HostsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        pieData: GraphUtil.parsePieData(response, orchMap)
+        pieData: GraphUtil.parsePieData(response, GraphUtil.constructMap(response))
       });
     });
-    */}
+
 
   }
 

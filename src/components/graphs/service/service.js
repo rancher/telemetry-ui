@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Line, Pie } from 'react-chartjs';
+import GraphLoader from '../../graph-loader/graph-loader';
 
 class Service extends Component {
   render() {
     if (this.props.lineData && this.props.pieData) {
       return (
-        <div>
+        <div className="col span6">
           <h1>Services</h1>
           <div>
             <h4>Per Stack Average: {this.props.serviceTotals.perStackAvg}</h4>
@@ -16,7 +17,7 @@ class Service extends Component {
       );
     }
     return (
-      <div>Loading</div>
+      <GraphLoader />
     );
   }
 }
