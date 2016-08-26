@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EnvironmentsContainer from './environments/environments-container';
 import HostsContainer from './hosts/hosts-container';
+import StackContainer from './stacks/stack-container';
 
 class GraphsContainer extends Component {
   render() {
@@ -8,6 +9,7 @@ class GraphsContainer extends Component {
       <div>
         <EnvironmentsContainer />
         <HostsContainer />
+        <StackContainer />
       </div>
     );
   }
