@@ -3,6 +3,11 @@ import './App.css';
 import './logos/loader-graph.svg';
 
 class App extends Component {
+  componentDidMount() {
+    window.setTimeout(() => {
+      document.location.reload();
+    }, 600000);
+  }
   render() {
     return (
       <div className="app">

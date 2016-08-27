@@ -5,7 +5,7 @@ import GraphLoader from '../../graph-loader/graph-loader';
 
 class Environments extends Component {
   render() {
-    if (!true &&this.props.lineData && this.props.pieData) {
+    if (this.props.lineData && this.props.pieData) {
       return (
         <div className="col span6 container-environments">
           <h1>Environemnts</h1>
