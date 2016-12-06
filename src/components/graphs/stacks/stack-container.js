@@ -20,7 +20,7 @@ class StackContainer extends Component {
   componentDidMount() {
     fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYSTACK}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -35,7 +35,7 @@ class StackContainer extends Component {
 
     fetch(`https://telemetry.rancher.io/admin/active/fields/${STACKSCOUNTS}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {

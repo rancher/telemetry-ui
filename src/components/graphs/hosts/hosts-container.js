@@ -23,7 +23,7 @@ class HostsContainer extends Component {
   componentDidMount() {
     fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYHOST}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -38,7 +38,7 @@ class HostsContainer extends Component {
 
     fetch(`https://telemetry.rancher.io/admin/active/fields/${CPUTOTALS}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -57,7 +57,7 @@ class HostsContainer extends Component {
 
     fetch(`https://telemetry.rancher.io/admin/active/map/${TOTALSKEYDRIVER}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {

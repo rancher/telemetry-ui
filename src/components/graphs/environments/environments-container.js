@@ -18,7 +18,7 @@ class EnvironmentsContainer extends Component {
   componentDidMount() {
     fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYENV}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -33,7 +33,7 @@ class EnvironmentsContainer extends Component {
 
     fetch(`https://telemetry.rancher.io/admin/active/map/${TOTALSKEYORCH}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -42,7 +42,7 @@ class EnvironmentsContainer extends Component {
         return response.json();
     }).then((response) => {
       this.setState({
-        pieData: GraphUtil.parsePieData(response, GraphUtil.constructMap(response))
+        pieData: GraphUtil.parsePieData(response, GraphUtil.constructMap(response)),
       });
     });
 

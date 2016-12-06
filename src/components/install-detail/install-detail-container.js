@@ -13,7 +13,7 @@ class InstallDetailContainer extends Component {
   componentDidMount() {
     return fetch(`https://telemetry.rancher.io/admin/installs/${this.props.params.id}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {

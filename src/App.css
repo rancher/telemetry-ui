@@ -2,7 +2,14 @@ nav {
   background-color: #ecf0f1;
 }
 .loader-graph {
-  background: url(/static/media/loader-graph.svg) no-repeat -90px/120%;
-  height: 300px;
-  width: 600px;
+  background: url(/static/media/loader-graph.svg) #ECF0F1 no-repeat 50%/65%;
+  height: 350px;
+  width: 100%;
+}
+.recharts-responsive-container {
+    display: inline-block;
+}
+.site-logo {
+  background: url(/static/media/telemetry-logo-03.svg) no-repeat 45px/80%;
+  height: 80px;
 }

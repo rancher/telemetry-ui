@@ -1,7 +1,6 @@
 import Constants from './constants';
 
 let GraphUtil = {
-
   constructMap(data) {
     let keys = Object.keys(data);
     let tmp = [];
@@ -20,22 +19,14 @@ let GraphUtil = {
   },
 
   parseLineData(dataset, label, subKey) {
-    let out = {
-      datasets: [{
-        label: label,
-        data: []
-      }]
-    };
     let data = [];
     let keys = Object.keys(dataset);
 
-    out.labels = keys;
     keys.forEach((cv) => {
-      data.push(dataset[cv][subKey]);
+      data.push({name: cv, value: dataset[cv][subKey]});
     });
 
-    out.datasets[0].data = data;
-    return out;
+    return data;
   },
 
   parsePieData(dataset, map) {

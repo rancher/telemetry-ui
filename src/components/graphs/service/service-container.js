@@ -22,7 +22,7 @@ class ServiceContainer extends Component {
   componentDidMount() {
     fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYENV}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -37,7 +37,7 @@ class ServiceContainer extends Component {
 
     fetch(`https://telemetry.rancher.io/admin/active/map/${TOTALSKEYORCH}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {
@@ -52,7 +52,7 @@ class ServiceContainer extends Component {
 
     fetch(`https://telemetry.rancher.io/admin/active/fields/${TOTALSSERVICES}`, {
       headers: {
-        'Authorization': `Basic ${btoa('foo:bar')}`
+        'Authorization': `Basic ${btoa('')}`
       }
     }).then((response) => {
         if (response.status >= 400) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './logos/loader-graph.svg';
+import './logos/telemetry-logo-03.svg';
 
 class App extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class App extends Component {
       <div className="app">
         <header>
           <nav className='row'>
-            <h2 className="logo btn bg-transparent col span-2">Telemetry</h2>
+            <h2 className="logo btn bg-transparent col span-4 site-logo"></h2>
           </nav>
         </header>
         {this.props.children}
