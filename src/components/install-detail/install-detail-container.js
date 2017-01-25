@@ -12,9 +12,9 @@ class InstallDetailContainer extends Component {
 
   componentDidMount() {
     return fetch(`https://telemetry.rancher.io/admin/installs/${this.props.params.id}`, {
-      headers: {
-        'Authorization': `Basic ${btoa('')}`
-      }
+      // headers: {
+      //   'Authorization': `Basic ${btoa('')}`
+      // }
     }).then((response) => {
         if (response.status >= 400) {
             throw new Error("Bad response from server");

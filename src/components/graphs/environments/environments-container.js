@@ -17,9 +17,9 @@ class EnvironmentsContainer extends Component {
 
   componentDidMount() {
     fetch(`https://telemetry.rancher.io/admin/history/fields/${TOTALSKEYENV}`, {
-      headers: {
-        'Authorization': `Basic ${btoa('')}`
-      }
+      // headers: {
+      //   'Authorization': `Basic ${btoa('')}`
+      // }
     }).then((response) => {
         if (response.status >= 400) {
             throw new Error("Bad response from server");
@@ -32,9 +32,9 @@ class EnvironmentsContainer extends Component {
     });
 
     fetch(`https://telemetry.rancher.io/admin/active/map/${TOTALSKEYORCH}`, {
-      headers: {
-        'Authorization': `Basic ${btoa('')}`
-      }
+      // headers: {
+      //   'Authorization': `Basic ${btoa('')}`
+      // }
     }).then((response) => {
         if (response.status >= 400) {
             throw new Error("Bad response from server");
